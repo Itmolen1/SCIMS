@@ -7,25 +7,24 @@ using System.Threading.Tasks;
 
 namespace SCIMSApi.Models
 {
-    public class CoursesInformation
+    public class StudentInformation
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Please provide course name")]
-        [MaxLength(100,ErrorMessage = "Allwed only 500 character")]
+        [Required(ErrorMessage = "Please provide student name")]
+        [MaxLength(100, ErrorMessage = "Allwed only 100 character")]
         public string Name { get; set; }
-        [MaxLength(500,ErrorMessage = "Allwed only 500 character")]
-        public string Description { get; set; }
-        public int CreatedBy { get; set; }
-        public DateTime CreatedDate { get; set; } = System.DateTime.Now;
+        public string ContactNumber { get; set; }
+        public string EmergencyContact { get; set; }
+        [MaxLength(500, ErrorMessage = "Allowed only 500 character")]
+        public string Descriptions { get; set; }
         public int SchoolId { get; set; }
-        public bool IsActive { get; set; }
-
+        public int CreatedBy { get; set; }
         [ForeignKey("SchoolId")]
         public SchoolInformation SchoolInformation { get; set; }
         [ForeignKey("CreatedBy")]
         public UserInformation UserInformation { get; set; }
-        //public ICollection<ClassRoomInformation> ClassRoomInformation { get; set; }
+
     }
 }

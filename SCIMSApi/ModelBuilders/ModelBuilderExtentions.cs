@@ -55,7 +55,7 @@ namespace SCIMSApi.ModelBuilders
                     IsActive = true,
                 }
                 );
-            
+
             modelBuilder.Entity<ClassRoomInformation>().HasData(
                 new ClassRoomInformation
                 {
@@ -90,7 +90,7 @@ namespace SCIMSApi.ModelBuilders
                         CreatedBy = 1,
                         CreatedDate = DateTime.Now,
                         SchoolId = 1,
-                        IsActive = true                    
+                        IsActive = true
                     }
                 );
 
@@ -105,6 +105,31 @@ namespace SCIMSApi.ModelBuilders
                 .WithMany(q => q.CoursesInformation)
                 .HasForeignKey(x => x.CreatedBy)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<StudentInformation>().HasData(
+                new StudentInformation
+                {
+                    Id = 1,
+                    Name = "Test Student Name",
+                    Descriptions = "this is first test student from seeds",
+                    ContactNumber = "1313213",
+                    EmergencyContact = "13211313",
+                    CreatedBy = 1,
+                    SchoolId = 1
+                }
+                );
+
+            modelBuilder.Entity<StudentInformation>()
+                .HasOne(p => p.SchoolInformation)
+                .WithMany(q => q.StudentInformation)
+                .HasForeignKey(x => x.SchoolId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<StudentInformation>()
+              .HasOne(p => p.UserInformation)
+              .WithMany(q => q.StudentInformation)
+              .HasForeignKey(x => x.CreatedBy)
+              .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

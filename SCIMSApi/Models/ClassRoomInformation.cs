@@ -21,9 +21,11 @@ namespace SCIMSApi.Models
         public int CreatedBy { get; set; } = 0;
         public DateTime CreatedDate { get; set; } = System.DateTime.Now;
         public bool IsActive { get; set; } = true;
+
         [ForeignKey("CreatedBy")]
         public SchoolInformation SchoolInformation { get; set; }
         [ForeignKey("SchoolId")]
         public UserInformation UserInformation { get; set; }
+       // public ICollection<CoursesInformation> CoursesInformation { get; set; }
     }
 }

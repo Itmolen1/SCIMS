@@ -37,6 +37,7 @@ namespace SCIMSApi
             services.AddScoped<ISchoolRepository, MockSchoolRepository>();
             services.AddScoped<IClassRoomRepository, MockClassRoomRepository>();
             services.AddScoped<ICoursesRepository, MockCoursesRepository>();
+            services.AddScoped<IStudentRepository, MockStudentInformtion>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
