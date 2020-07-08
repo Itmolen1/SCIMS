@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200706105025_InitialMigration.cs" />
+    <Compile Remove="Migrations\20200706112408_seedUserInformation.cs" />
+    <Compile Remove="Migrations\20200706113751_seedUserInformations.cs" />
+    <Compile Remove="Migrations\20200706114501_seedUserInformationswithKey.cs" />
+    <Compile Remove="Migrations\20200706114838_seedUserInformationswithKey1.cs" />
+    <Compile Remove="Migrations\20200706115123_seedUserInformationswithKey2.cs" />
+    <Compile Remove="Migrations\20200706115851_seedUserInformationswithKey3.cs" />
+    <Compile Remove="Migrations\20200706120319_seedUserInformationswithKey4.cs" />
+    <Compile Remove="Migrations\20200707084226_classRoomCreate.cs" />
+    <Compile Remove="Migrations\20200707085536_ClassRoomSeed.cs" />
+    <Compile Remove="Migrations\20200707090734_ClassRoomSeed.cs" />
+    <Compile Remove="Migrations\20200707091135_ClassRoomSeed.cs" />
+    <Compile Remove="Migrations\20200707091709_ClassRoomSeed.cs" />
+    <Compile Remove="Migrations\20200707102208_ClassRoomSeed.cs" />
+    <Compile Remove="Migrations\20200707102540_ClassRoomSeeding.cs" />
+    <Compile Remove="Migrations\20200707103425_ClassRoomSeeds.cs" />
+    <Compile Remove="Migrations\20200707103854_ClassRoomCreate.cs" />
+    <Compile Remove="Migrations\20200708073142_CoursesCreate.cs" />
+    <Compile Remove="Migrations\20200708081217_CourseInformationCreate.cs" />
+    <Compile Remove="Migrations\20200708081906_CourseInformationCreate.cs" />
+    <Compile Remove="Migrations\20200708082103_CourseInformationCreate.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+</Project>
