@@ -26,6 +26,6 @@ namespace SCIMSApi.Models
         public SchoolInformation SchoolInformation { get; set; }
         [ForeignKey("SchoolId")]
         public UserInformation UserInformation { get; set; }
-       // public ICollection<CoursesInformation> CoursesInformation { get; set; }
+        public ICollection<CourseClassRoom> CourseClassRooms { get; set; }
     }
 }

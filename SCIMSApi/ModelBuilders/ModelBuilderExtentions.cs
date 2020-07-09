@@ -130,6 +130,31 @@ namespace SCIMSApi.ModelBuilders
               .WithMany(q => q.StudentInformation)
               .HasForeignKey(x => x.CreatedBy)
               .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<CourseClassRoom>()
+                 .HasKey(x => new { x.CourseId, x.ClassRoomId });
+
+            modelBuilder.Entity<CourseClassRoom>()
+                .HasOne(x => x.ClassRoomInformation)
+                .WithMany(y => y.CourseClassRooms)
+                .HasForeignKey(x => x.ClassRoomId);
+
+            modelBuilder.Entity<CourseClassRoom>()
+                .HasOne(x => x.CoursesInformation)
+                .WithMany(y => y.CourseClassRooms)
+                .HasForeignKey(y => y.CourseId);
+
+            modelBuilder.Entity<CourseClassRoom>()
+                .HasData(
+                    new CourseClassRoom
+                    {
+                        Id= 1,
+                        ClassRoomId = 1,
+                        CourseId = 1,
+                        IsActive = true
+                    }
+                );
         }
     }
 }
