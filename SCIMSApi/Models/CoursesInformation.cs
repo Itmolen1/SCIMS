@@ -19,6 +19,8 @@ namespace SCIMSApi.Models
         public string Description { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; } = System.DateTime.Now;
+        [Required(ErrorMessage = "Please provide total marks of the course")]
+        public int TotalMarks { get; set; } = 0;
         public int SchoolId { get; set; }
         public bool IsActive { get; set; }
 

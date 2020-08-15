@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SCIMSApi.Models;
 
 namespace SCIMSApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200712081533_AddCourseTotalMarks")]
+    partial class AddCourseTotalMarks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("ClassRoomInformations");
 
                     b.HasData(
-                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2020, 7, 12, 12, 29, 12, 227, DateTimeKind.Local), Description = "Test Class Room", IsActive = true, Name = "Class 1", SchoolId = 1 }
+                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2020, 7, 12, 12, 15, 32, 603, DateTimeKind.Local), Description = "Test Class Room", IsActive = true, Name = "Class 1", SchoolId = 1 }
                     );
                 });
 
@@ -110,38 +112,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("CoursesInformations");
 
                     b.HasData(
-                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2020, 7, 12, 12, 29, 12, 232, DateTimeKind.Local), Description = "Test Course", IsActive = true, Name = "Course One", SchoolId = 1, TotalMarks = 100 }
-                    );
-                });
-
-            modelBuilder.Entity("SCIMSApi.Models.ExamInformation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CreatedBy");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("ExamName")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<int>("SchoolId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedBy");
-
-                    b.HasIndex("SchoolId");
-
-                    b.ToTable("ExamInformations");
-
-                    b.HasData(
-                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2020, 7, 12, 12, 29, 12, 240, DateTimeKind.Local), ExamName = "First Term", IsActive = true, SchoolId = 1 }
+                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2020, 7, 12, 12, 15, 32, 606, DateTimeKind.Local), Description = "Test Course", IsActive = true, Name = "Course One", SchoolId = 1, TotalMarks = 100 }
                     );
                 });
 
@@ -199,7 +170,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("SchoolInformations");
 
                     b.HasData(
-                        new { Id = 1, Address = "Abu Dhabi, UAE", CreatedBy = 1, CreatedDate = new DateTime(2020, 7, 12, 12, 29, 12, 226, DateTimeKind.Local), IsActive = true, Logo = "this.png", Mobile = "91 45454655", Name = "Test School One", Phone = "0302 45454555", RegistrationNo = "011121110" }
+                        new { Id = 1, Address = "Abu Dhabi, UAE", CreatedBy = 1, CreatedDate = new DateTime(2020, 7, 12, 12, 15, 32, 602, DateTimeKind.Local), IsActive = true, Logo = "this.png", Mobile = "91 45454655", Name = "Test School One", Phone = "0302 45454555", RegistrationNo = "011121110" }
                     );
                 });
 
@@ -269,7 +240,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("UserInformations");
 
                     b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2020, 7, 12, 12, 29, 12, 222, DateTimeKind.Local), FullName = "Admin", GenderId = 1, IsActive = true, UserName = "admin@gmail.com", UserPassword = "1234" }
+                        new { Id = 1, CreatedDate = new DateTime(2020, 7, 12, 12, 15, 32, 600, DateTimeKind.Local), FullName = "Admin", GenderId = 1, IsActive = true, UserName = "admin@gmail.com", UserPassword = "1234" }
                     );
                 });
 
@@ -308,19 +279,6 @@ namespace SCIMSApi.Migrations
 
                     b.HasOne("SCIMSApi.Models.SchoolInformation", "SchoolInformation")
                         .WithMany("CoursesInformation")
-                        .HasForeignKey("SchoolId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("SCIMSApi.Models.ExamInformation", b =>
-                {
-                    b.HasOne("SCIMSApi.Models.UserInformation", "UserInformation")
-                        .WithMany("ExamInformation")
-                        .HasForeignKey("CreatedBy")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("SCIMSApi.Models.SchoolInformation", "SchoolInformation")
-                        .WithMany("ExamInformation")
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

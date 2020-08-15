@@ -90,7 +90,8 @@ namespace SCIMSApi.ModelBuilders
                         CreatedBy = 1,
                         CreatedDate = DateTime.Now,
                         SchoolId = 1,
-                        IsActive = true
+                        IsActive = true,
+                        TotalMarks = 100
                     }
                 );
 
@@ -149,12 +150,36 @@ namespace SCIMSApi.ModelBuilders
                 .HasData(
                     new CourseClassRoom
                     {
-                        Id= 1,
+                        Id = 1,
                         ClassRoomId = 1,
                         CourseId = 1,
                         IsActive = true
                     }
                 );
+
+            modelBuilder.Entity<ExamInformation>().HasData(
+                new ExamInformation
+                    {
+                        Id = 1,
+                        ExamName = "First Term",
+                        SchoolId = 1,
+                        CreatedBy = 1,
+                        CreatedDate = DateTime.Now,
+                        IsActive = true,
+                    }
+                );
+
+            modelBuilder.Entity<ExamInformation>()
+                .HasOne(q => q.SchoolInformation)
+                .WithMany(p => p.ExamInformation)
+                .HasForeignKey(x => x.SchoolId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ExamInformation>()
+                .HasOne(q => q.UserInformation)
+                .WithMany(p => p.ExamInformation)
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
