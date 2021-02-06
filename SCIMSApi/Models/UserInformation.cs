@@ -34,5 +34,6 @@ namespace SCIMSApi.Models
         public ICollection<CoursesInformation> CoursesInformation { get; set; }
         public ICollection<StudentInformation> StudentInformation { get; set; }
         public ICollection<ExamInformation> ExamInformation { get; set; }
+        public ICollection<EmployeeInformation> EmployeeInformation { get; set; }
     }
 }
