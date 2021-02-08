@@ -12,13 +12,14 @@ namespace SCIMSApi.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Please provide course name")]
+        [Required(ErrorMessage = "Please provide name")]
         [MaxLength(100, ErrorMessage = "Allwed only 500 character")]
         public string Name { get; set; }
         [MaxLength(500, ErrorMessage = "Allwed only 500 character")]
         public string Description { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; } = System.DateTime.Now;
+        public DateTime DateofBirth { get; set; } = System.DateTime.Now;
         public int SchoolId { get; set; }
         public bool IsActive { get; set; }
 

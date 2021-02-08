@@ -198,6 +198,7 @@ namespace SCIMSApi.ModelBuilders
                 new EmployeeInformation {
                     Id = 1,
                     Name = "Test Employee",
+                    DateofBirth = System.DateTime.Now,
                     CreatedBy = 1,
                     CreatedDate = System.DateTime.Now,
                     Description = "New Test Employee Added",

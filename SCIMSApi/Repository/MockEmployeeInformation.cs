@@ -29,24 +29,65 @@ namespace SCIMSApi.Repository
             }
         }
 
-        public Task<EmployeeInformation> Delete(int Id)
+        public async Task<EmployeeInformation> Delete(int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var employee = await _context.EmployeeInformations.FirstOrDefaultAsync(x => x.Id == Id);
+                _context.Remove(employee);
+                await _context.SaveChangesAsync();
+
+                return employee;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public Task<EmployeeInformation> GetById(int Id)
+        public async Task<EmployeeInformation> GetById(int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var employee = await _context.EmployeeInformations.Include("SchoolInformation").Include("UserInformation").FirstOrDefaultAsync(x => x.Id == Id);
+                return employee;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public Task<EmployeeInformation> Insert(EmployeeInformation employeeInformation)
+        public async Task<EmployeeInformation> Insert(EmployeeInformation employeeInformation)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.EmployeeInformations.Add(employeeInformation);
+                await _context.SaveChangesAsync();
+                return employeeInformation;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public Task<EmployeeInformation> Update(EmployeeInformation employeeInformation)
+        public async Task<EmployeeInformation> Update(EmployeeInformation employeeInformation)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var employee = _context.EmployeeInformations.Attach(employeeInformation);
+                employee.State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+
+                return employeeInformation;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -26,6 +26,7 @@
     <Compile Remove="Migrations\20200708081217_CourseInformationCreate.cs" />
     <Compile Remove="Migrations\20200708081906_CourseInformationCreate.cs" />
     <Compile Remove="Migrations\20200708082103_CourseInformationCreate.cs" />
+    <Compile Remove="Migrations\20210207114123_Rating.cs" />
   </ItemGroup>
 
   <ItemGroup>
