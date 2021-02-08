@@ -181,6 +181,31 @@ namespace SCIMSApi.ModelBuilders
                 .HasForeignKey(x => x.CreatedBy)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<DepartmentInformation>()
+                .HasOne(q => q.UserInformation)
+                .WithMany(p => p.DepartmentInformation)
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<DepartmentInformation>()
+                .HasOne(q => q.SchoolInformation)
+                .WithMany(p => p.DepartmentInformation)
+                .HasForeignKey(x => x.SchoolId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<DepartmentInformation>()
+                .HasData(
+                new DepartmentInformation
+                {
+                    Id=1,
+                    Name = "Urdu",
+                    CreatedBy =1,
+                    CreatedDate = System.DateTime.Now,
+                    Description = "New test department added",
+                    IsActive = true,
+                    SchoolId = 1
+                });
+
             modelBuilder.Entity<EmployeeInformation>()
                 .HasOne(q => q.UserInformation)
                 .WithMany(p => p.EmployeeInformation)

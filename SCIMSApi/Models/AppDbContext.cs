@@ -23,6 +23,7 @@ namespace SCIMSApi.Models
         public DbSet<CourseClassRoom> CourseClassRooms { get; set; }
         public DbSet<ExamInformation> ExamInformations { get; set; }
         public DbSet<EmployeeInformation> EmployeeInformations { get; set; }
+        public DbSet<DepartmentInformation> DepartmentInformation { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
