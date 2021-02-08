@@ -206,6 +206,33 @@ namespace SCIMSApi.ModelBuilders
                     SchoolId = 1
                 });
 
+            modelBuilder.Entity<DesignationInformation>()
+                .HasOne(q => q.SchoolInformation)
+                .WithMany(p => p.DesignationInformation)
+                .HasForeignKey(x => x.SchoolId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<DesignationInformation>()
+                .HasOne(q => q.UserInformation)
+                .WithMany(p => p.DesignationInformation)
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<DesignationInformation>()
+                .HasData(
+                        new DesignationInformation
+                        {
+                            Id = 1,
+                            Name = "Test Desugnation",
+                            CreatedBy = 1,
+                            CreatedDate = System.DateTime.Now,
+                            Description = "New test Designation is created",
+                            IsActive = true,
+                            SchoolId = 1
+                        });
+
+
+
             modelBuilder.Entity<EmployeeInformation>()
                 .HasOne(q => q.UserInformation)
                 .WithMany(p => p.EmployeeInformation)
