@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SCIMSApi.Models;
 
 namespace SCIMSApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210209111131_BloodGroupInformation")]
+    partial class BloodGroupInformation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,10 +42,6 @@ namespace SCIMSApi.Migrations
                     b.HasIndex("CreatedBy");
 
                     b.ToTable("BloodGroupInformations");
-
-                    b.HasData(
-                        new { Id = 1, BloodGroup = "B+", CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 21, 12, 529, DateTimeKind.Local), Description = "New test of blood group added", IsActive = true }
-                    );
                 });
 
             modelBuilder.Entity("SCIMSApi.Models.ClassRoomInformation", b =>
@@ -76,7 +74,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("ClassRoomInformations");
 
                     b.HasData(
-                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 21, 12, 482, DateTimeKind.Local), Description = "Test Class Room", IsActive = true, Name = "Class 1", SchoolId = 1 }
+                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 11, 30, 945, DateTimeKind.Local), Description = "Test Class Room", IsActive = true, Name = "Class 1", SchoolId = 1 }
                     );
                 });
 
@@ -137,7 +135,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("CoursesInformations");
 
                     b.HasData(
-                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 21, 12, 491, DateTimeKind.Local), Description = "Test Course", IsActive = true, Name = "Course One", SchoolId = 1, TotalMarks = 100 }
+                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 11, 30, 948, DateTimeKind.Local), Description = "Test Course", IsActive = true, Name = "Course One", SchoolId = 1, TotalMarks = 100 }
                     );
                 });
 
@@ -171,7 +169,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("DepartmentInformations");
 
                     b.HasData(
-                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 21, 12, 520, DateTimeKind.Local), Description = "New test department added", IsActive = true, Name = "Urdu", SchoolId = 1 }
+                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 11, 30, 958, DateTimeKind.Local), Description = "New test department added", IsActive = true, Name = "Urdu", SchoolId = 1 }
                     );
                 });
 
@@ -205,7 +203,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("DesignationInformations");
 
                     b.HasData(
-                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 21, 12, 527, DateTimeKind.Local), Description = "New test Designation is created", IsActive = true, Name = "Test Desugnation", SchoolId = 1 }
+                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 11, 30, 961, DateTimeKind.Local), Description = "New test Designation is created", IsActive = true, Name = "Test Desugnation", SchoolId = 1 }
                     );
                 });
 
@@ -219,8 +217,6 @@ namespace SCIMSApi.Migrations
                         .HasMaxLength(500);
 
                     b.Property<int>("Age");
-
-                    b.Property<int>("BloodGroupId");
 
                     b.Property<int>("CreatedBy");
 
@@ -255,8 +251,6 @@ namespace SCIMSApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BloodGroupId");
-
                     b.HasIndex("CreatedBy");
 
                     b.HasIndex("DepartmentId");
@@ -268,7 +262,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("EmployeeInformations");
 
                     b.HasData(
-                        new { Id = 1, Age = 0, BloodGroupId = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 21, 12, 533, DateTimeKind.Local), DateofBirth = new DateTime(2021, 2, 9, 15, 21, 12, 533, DateTimeKind.Local), DepartmentId = 1, Description = "New Test Employee Added", GenderId = 1, HireDate = new DateTime(2021, 2, 9, 15, 21, 12, 533, DateTimeKind.Local), IsActive = true, Name = "Test Employee", SchoolId = 1 }
+                        new { Id = 1, Age = 0, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 11, 30, 964, DateTimeKind.Local), DateofBirth = new DateTime(2021, 2, 9, 15, 11, 30, 964, DateTimeKind.Local), DepartmentId = 1, Description = "New Test Employee Added", GenderId = 1, HireDate = new DateTime(2021, 2, 9, 15, 11, 30, 964, DateTimeKind.Local), IsActive = true, Name = "Test Employee", SchoolId = 1 }
                     );
                 });
 
@@ -299,7 +293,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("ExamInformations");
 
                     b.HasData(
-                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 21, 12, 507, DateTimeKind.Local), ExamName = "First Term", IsActive = true, SchoolId = 1 }
+                        new { Id = 1, CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 11, 30, 954, DateTimeKind.Local), ExamName = "First Term", IsActive = true, SchoolId = 1 }
                     );
                 });
 
@@ -357,7 +351,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("SchoolInformations");
 
                     b.HasData(
-                        new { Id = 1, Address = "Abu Dhabi, UAE", CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 21, 12, 481, DateTimeKind.Local), IsActive = true, Logo = "this.png", Mobile = "91 45454655", Name = "Test School One", Phone = "0302 45454555", RegistrationNo = "011121110" }
+                        new { Id = 1, Address = "Abu Dhabi, UAE", CreatedBy = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 11, 30, 944, DateTimeKind.Local), IsActive = true, Logo = "this.png", Mobile = "91 45454655", Name = "Test School One", Phone = "0302 45454555", RegistrationNo = "011121110" }
                     );
                 });
 
@@ -427,7 +421,7 @@ namespace SCIMSApi.Migrations
                     b.ToTable("UserInformations");
 
                     b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 21, 12, 478, DateTimeKind.Local), FullName = "Admin", GenderId = 1, IsActive = true, UserName = "admin@gmail.com", UserPassword = "1234" }
+                        new { Id = 1, CreatedDate = new DateTime(2021, 2, 9, 15, 11, 30, 942, DateTimeKind.Local), FullName = "Admin", GenderId = 1, IsActive = true, UserName = "admin@gmail.com", UserPassword = "1234" }
                     );
                 });
 
@@ -436,7 +430,7 @@ namespace SCIMSApi.Migrations
                     b.HasOne("SCIMSApi.Models.UserInformation", "UserInformation")
                         .WithMany("BloodGroupInformation")
                         .HasForeignKey("CreatedBy")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SCIMSApi.Models.ClassRoomInformation", b =>
@@ -506,11 +500,6 @@ namespace SCIMSApi.Migrations
 
             modelBuilder.Entity("SCIMSApi.Models.EmployeeInformation", b =>
                 {
-                    b.HasOne("SCIMSApi.Models.BloodGroupInformation", "BloodGroupInformation")
-                        .WithMany("EmployeeInformations")
-                        .HasForeignKey("BloodGroupId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("SCIMSApi.Models.UserInformation", "UserInformation")
                         .WithMany("EmployeeInformation")
                         .HasForeignKey("CreatedBy")

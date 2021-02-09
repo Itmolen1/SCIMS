@@ -25,6 +25,7 @@ namespace SCIMSApi.Models
         public DbSet<DepartmentInformation> DepartmentInformations { get; set; }
         public DbSet<DesignationInformation> DesignationInformations { get; set; }
         public DbSet<EmployeeInformation> EmployeeInformations { get; set; }
+        public DbSet<BloodGroupInformation> BloodGroupInformations { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

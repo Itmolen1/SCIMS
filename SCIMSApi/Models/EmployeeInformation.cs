@@ -31,7 +31,7 @@ namespace SCIMSApi.Models
         public string ImageUrl { get; set; }
         public int DepartmentId { get; set; }
         public int SchoolId { get; set; }
-        //public int BloodGroupId { get; set; }
+        public int BloodGroupId { get; set; }
         public bool IsActive { get; set; }
         public int Age { get; set; }
         
@@ -41,8 +41,8 @@ namespace SCIMSApi.Models
         public UserInformation UserInformation { get; set; }
         [ForeignKey("GenderId")]
         public Gender Gender { get; set; }
-        //[ForeignKey("BloodGroupId")]
-        //public BloodGroupInformation BloodGroupInformation { get; set;}
+        [ForeignKey("BloodGroupId")]
+        public BloodGroupInformation BloodGroupInformation { get; set; }
         [ForeignKey("DepartmentId")]
         public DepartmentInformation DepartmentInformation { get; set; }
     }

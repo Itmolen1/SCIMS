@@ -230,7 +230,26 @@ namespace SCIMSApi.ModelBuilders
                             IsActive = true,
                             SchoolId = 1
                         });
-                        
+
+            modelBuilder.Entity<BloodGroupInformation>()
+                .HasOne(q => q.UserInformation)
+                .WithMany(p => p.BloodGroupInformation)
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<BloodGroupInformation>()
+                .HasData(
+                new BloodGroupInformation
+                {
+                    Id = 1,
+                    BloodGroup = "B+",
+                    CreatedBy = 1,
+                    CreatedDate = System.DateTime.Now,
+                    Description = "New test of blood group added",
+                    IsActive = true
+                });
+
+
             modelBuilder.Entity<EmployeeInformation>()
                 .HasOne(q => q.UserInformation)
                 .WithMany(p => p.EmployeeInformation)
@@ -242,6 +261,12 @@ namespace SCIMSApi.ModelBuilders
                 .WithMany(p => p.EmployeeInformation)
                 .HasForeignKey(x => x.SchoolId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<EmployeeInformation>()
+               .HasOne(q => q.BloodGroupInformation)
+               .WithMany(p => p.EmployeeInformations)
+               .HasForeignKey(x => x.BloodGroupId)
+               .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<EmployeeInformation>()
                 .HasOne(q => q.DepartmentInformation)
@@ -262,7 +287,15 @@ namespace SCIMSApi.ModelBuilders
                     SchoolId = 1,
                     GenderId = 1,
                     DepartmentId = 1,
-                  //  BloodGroupId = 1
+                    BloodGroupId = 1,
+                    EmailAddress = "Employee@test.com",
+                    Age = 30,
+                    HireDate = System.DateTime.Now,
+                    ImageUrl = "noImage.png",
+                    MobileNumber = "1235 12132131",
+                    EmergencyContactNumber = "123 4546456",
+                    Address = "Abu Dhabi Uae"
+                   
                 });
 
         }
