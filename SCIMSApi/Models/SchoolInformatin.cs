@@ -35,5 +35,6 @@ namespace SCIMSApi.Models
         public ICollection<EmployeeInformation> EmployeeInformation { get; set; }
         public ICollection<DepartmentInformation> DepartmentInformation { get; set; }
         public ICollection<DesignationInformation> DesignationInformation { get; set; }
+        public ICollection<BloodGroupInformation> BloodGroupInformation { get; set; } 
     }
 }

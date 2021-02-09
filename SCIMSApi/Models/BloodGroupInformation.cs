@@ -15,11 +15,14 @@ namespace SCIMSApi.Models
         public string BloodGroup { get; set; }
         public string Description { get; set; }
         public int CreatedBy { get; set; }
+        public int SchoolId { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }
         
         [ForeignKey("CreatedBy")]
         public UserInformation UserInformation { get; set; }
+        [ForeignKey("SchoolId")]
+        public SchoolInformation SchoolInformation { get; set; }
         public ICollection<EmployeeInformation> EmployeeInformations { get; set; }
     }
 }

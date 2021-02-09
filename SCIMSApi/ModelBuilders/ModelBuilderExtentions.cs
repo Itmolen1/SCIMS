@@ -74,7 +74,6 @@ namespace SCIMSApi.ModelBuilders
                .HasForeignKey(x => x.CreatedBy)
                .OnDelete(DeleteBehavior.Restrict);
 
-
             modelBuilder.Entity<ClassRoomInformation>()
                .HasOne(P => P.SchoolInformation)
                .WithMany(q => q.ClassRoomInformation)
@@ -238,6 +237,12 @@ namespace SCIMSApi.ModelBuilders
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<BloodGroupInformation>()
+                .HasOne(q => q.SchoolInformation)
+                .WithMany(p => p.BloodGroupInformation)
+                .HasForeignKey(x => x.SchoolId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<BloodGroupInformation>()
                 .HasData(
                 new BloodGroupInformation
                 {
@@ -246,10 +251,10 @@ namespace SCIMSApi.ModelBuilders
                     CreatedBy = 1,
                     CreatedDate = System.DateTime.Now,
                     Description = "New test of blood group added",
-                    IsActive = true
+                    IsActive = true,
+                    SchoolId = 1
                 });
-
-
+            
             modelBuilder.Entity<EmployeeInformation>()
                 .HasOne(q => q.UserInformation)
                 .WithMany(p => p.EmployeeInformation)
@@ -297,6 +302,9 @@ namespace SCIMSApi.ModelBuilders
                     Address = "Abu Dhabi Uae"
                    
                 });
+
+
+
 
         }
     }

@@ -22,9 +22,10 @@ namespace SCIMSApi.Models
         public DateTime CreatedDate { get; set; } = System.DateTime.Now;
         public bool IsActive { get; set; } = true;
 
-        [ForeignKey("CreatedBy")]
-        public SchoolInformation SchoolInformation { get; set; }
+        
         [ForeignKey("SchoolId")]
+        public SchoolInformation SchoolInformation { get; set; }
+        [ForeignKey("CreatedBy")]
         public UserInformation UserInformation { get; set; }
         public ICollection<CourseClassRoom> CourseClassRooms { get; set; }
     }
