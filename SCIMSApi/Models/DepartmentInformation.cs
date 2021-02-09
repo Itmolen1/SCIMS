@@ -26,6 +26,7 @@ namespace SCIMSApi.Models
         public SchoolInformation SchoolInformation { get; set; }
         [ForeignKey("SchoolId")]
         public UserInformation UserInformation { get; set; }
+        public List<EmployeeInformation> EmployeeInformations { get; set; }
         
     }
 }

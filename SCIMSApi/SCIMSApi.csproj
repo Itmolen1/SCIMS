@@ -27,6 +27,10 @@
     <Compile Remove="Migrations\20200708081906_CourseInformationCreate.cs" />
     <Compile Remove="Migrations\20200708082103_CourseInformationCreate.cs" />
     <Compile Remove="Migrations\20210207114123_Rating.cs" />
+    <Compile Remove="Migrations\20210209062324_BloodGroupInformation.cs" />
+    <Compile Remove="Migrations\20210209104931_BloddGroupinformation.cs" />
+    <Compile Remove="Migrations\20210209105313_BloddGroupinformation.cs" />
+    <Compile Remove="Migrations\20210209105623_EmployeeInformationCreate.cs" />
   </ItemGroup>
 
   <ItemGroup>

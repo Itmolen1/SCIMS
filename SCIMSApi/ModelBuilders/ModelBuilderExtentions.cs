@@ -230,9 +230,7 @@ namespace SCIMSApi.ModelBuilders
                             IsActive = true,
                             SchoolId = 1
                         });
-
-
-
+                        
             modelBuilder.Entity<EmployeeInformation>()
                 .HasOne(q => q.UserInformation)
                 .WithMany(p => p.EmployeeInformation)
@@ -246,6 +244,12 @@ namespace SCIMSApi.ModelBuilders
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<EmployeeInformation>()
+                .HasOne(q => q.DepartmentInformation)
+                .WithMany(p => p.EmployeeInformations)
+                .HasForeignKey(x => x.DepartmentId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            modelBuilder.Entity<EmployeeInformation>()
                 .HasData(
                 new EmployeeInformation {
                     Id = 1,
@@ -255,9 +259,11 @@ namespace SCIMSApi.ModelBuilders
                     CreatedDate = System.DateTime.Now,
                     Description = "New Test Employee Added",
                     IsActive = true,
-                    SchoolId = 1                    
-                }
-                );
+                    SchoolId = 1,
+                    GenderId = 1,
+                    DepartmentId = 1,
+                  //  BloodGroupId = 1
+                });
 
         }
     }

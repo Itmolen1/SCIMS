@@ -22,9 +22,10 @@ namespace SCIMSApi.Models
         public DbSet<StudentInformation> StudentInformations { get; set; }
         public DbSet<CourseClassRoom> CourseClassRooms { get; set; }
         public DbSet<ExamInformation> ExamInformations { get; set; }
+        public DbSet<DepartmentInformation> DepartmentInformations { get; set; }
+        public DbSet<DesignationInformation> DesignationInformations { get; set; }
         public DbSet<EmployeeInformation> EmployeeInformations { get; set; }
-        public DbSet<DepartmentInformation> DepartmentInformation { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Seed();

@@ -21,7 +21,7 @@ namespace SCIMSApi.Repository
         {
             try
             {
-                return await _context.DepartmentInformation.Include("SchoolInformation").Include("UserInformation").ToListAsync();
+                return await _context.DepartmentInformations.Include("SchoolInformation").Include("UserInformation").ToListAsync();
             }
             catch (Exception)
             {
@@ -33,7 +33,7 @@ namespace SCIMSApi.Repository
         {
             try
             {
-                var department = await _context.DepartmentInformation.FirstOrDefaultAsync(x => x.Id == Id);
+                var department = await _context.DepartmentInformations.FirstOrDefaultAsync(x => x.Id == Id);
                 _context.Remove(department);
                 await _context.SaveChangesAsync();
 
@@ -50,7 +50,7 @@ namespace SCIMSApi.Repository
         {
             try
             {
-                var department = await _context.DepartmentInformation.FirstOrDefaultAsync(x => x.Id == Id);
+                var department = await _context.DepartmentInformations.FirstOrDefaultAsync(x => x.Id == Id);
                 return department;
             }
             catch (Exception)
@@ -63,7 +63,7 @@ namespace SCIMSApi.Repository
         {
             try
             {
-                _context.DepartmentInformation.Add(departmentInformation);
+                _context.DepartmentInformations.Add(departmentInformation);
                 await _context.SaveChangesAsync();
                 return departmentInformation;
 
@@ -78,7 +78,7 @@ namespace SCIMSApi.Repository
         {
             try
             {
-                var classRoom = _context.DepartmentInformation.Attach(departmentInformation);
+                var classRoom = _context.DepartmentInformations.Attach(departmentInformation);
                 classRoom.State = EntityState.Modified;
                 await _context.SaveChangesAsync();
 
